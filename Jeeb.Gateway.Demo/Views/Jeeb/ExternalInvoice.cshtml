@@ -1,0 +1,34 @@
+﻿@model Jeeb.Gateway.Demo.Models.NewPaymentViewModel
+@{
+Layout= null;
+}
+<!DOCTYPE html>
+<html>
+<body>
+
+    <form action="http://localhost:9876/invoice/payment" method="POST">
+        Token:<br>
+        <input type="text" name="token" value="@Model.Token">
+        <br>
+        Order NO:<br>
+        <input type="text" name="orderNo" value="@Model.OrderNo">
+        <br>
+        Request Amount:<br>
+        <input type="text" name="requestAmount" value="@Model.RequestAmount">
+        <br>
+        URL Call Back:<br>
+        <input type="text" name="callBackUrl" value="@Model.CallBackUrl">
+        <br>
+        Notification Web Hook:<br/>
+        <input type="text" name="notificationUrl" value="@Model.NotificationUrl" />
+        <br/>
+        AllowReject:<br>
+        <input type="checkbox" name="signature" value="false">
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>If you click the "Submit" button, the form-data will be sent to a page called http://localhost:9876/invoice/payment </p>
+
+</body>
+</html>

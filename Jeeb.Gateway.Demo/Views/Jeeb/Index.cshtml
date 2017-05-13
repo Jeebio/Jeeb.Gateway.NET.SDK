@@ -1,0 +1,98 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Tomain.io">
+    <meta name="author" content="Tomain.io Team">
+    <title>Bitcoin Gateway Demo</title>
+    <!-- Bootstrap core CSS -->
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+    <!-- Custom styles for this template -->
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body ng-app="app">
+<div class="container" ng-controller="main">
+    <div class="page-header">
+        <h1>Bitcoin Gateway Demo</h1>
+        <p class="lead">Developed by Jeeb Gateway Team&nbsp;</p>
+    </div>
+    <h3>Registering a new payment:</h3>
+    <form novalidate name="conversion" ng-submit="convertToBtc(conversion.$valid)">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="formInput1">Your amount in iranian rial</label>
+                    <input type="text" class="form-control" ng-model="convert.irr"  ng-pattern="/^[0-9]+(\.[0-9]{0,9})?$/" id="formInput1" placeholder="IRR" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="formInput0">Your amount in BTC</label>
+                    <input type="text" class="form-control" ng-model="convert.btc"  id="formInput0" placeholder="BTC" readonly="">
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary">Convert</button>
+            </div>
+            <br>
+        </div>
+    </form>
+
+    <h3>Registering a new payment:</h3>
+    <form novalidate name="gateway" ng-submit="submit(gateway.$valid)">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="formInput10">Order No</label>
+                    <input type="text" class="form-control" ng-model="requestModel.orderNo" ng-disabled="!allowToMakeRequest" id="formInput10" placeholder="OrderNo" required>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label class="control-label" for="formInput11">Request Amount</label>
+                    <input type="text" class="form-control" ng-model="requestModel.requestAmount" ng-disabled="!allowToMakeRequest" ng-pattern="/^[0-9]+(\.[0-9]{0,9})?$/" id="formInput11" placeholder="Amount" required>
+                </div>
+            </div>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button type="submit" class="btn btn-primary" ng-disabled="!allowToMakeRequest">Submit</button>
+            </div>
+            <br>
+        </div>
+    </form>
+</div>
+<!-- /container -->
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<script src="~/Scripts/jquery.signalR-2.2.1.js"></script>
+@*<script src="~/signalr/hubs"></script>*@
+<script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>  
+<script src="~/Scripts/angular.min.js"></script>
+<script src="~/Scripts/app/app.js"></script>
+<script src="~/Scripts/app/mainCtrl.js"></script>
+</body>
+</html>

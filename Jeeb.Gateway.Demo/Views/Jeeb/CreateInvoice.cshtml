@@ -1,0 +1,25 @@
+﻿
+@model Jeeb.Gateway.Demo.Models.CreateInvoiceViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CreateInvoice</title>
+</head>
+<body>
+<form id="invoiceForm" action="https://jeeb.io/invoice/payment" method="post">
+    <input hidden="" type="text" name="token" value="@Model.Token"/>
+</form>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#invoiceForm').submit();
+    });
+</script>
+</body>
+</html>
